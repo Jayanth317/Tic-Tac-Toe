@@ -144,22 +144,25 @@ class TicTacToe {
         return true;
     }
 
+    public static StartGame (char[][] board){
+        Scanner sc = new Scanner(System.in);
+
+        while (true) {
+            // User's move 
+            UserTurn(board, sc);
+            if (isGameOver(board))
+                break;
+            // Computer's move
+            ComputerTurn(board);
+            if (isGameOver(board))
+                break;
+        }    
+    }
     public static void main(String[] args) {
         char[][] board = { { ' ', ' ', ' ' },
                 { ' ', ' ', ' ' },
                 { ' ', ' ', ' ' } };
-        Scanner sc = new Scanner(System.in);
-
-        while (true) {
-            // User's input is taken
-            UserTurn(board, sc);
-            if (isGameOver(board))
-                break;
-            // Computer's move of filling the empty place
-            ComputerTurn(board);
-            if (isGameOver(board))
-                break;
-            // PrintBoard(board);
+        StartGame(board);
         }
     }
 
